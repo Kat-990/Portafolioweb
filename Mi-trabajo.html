@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi trabajo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./Estilos.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="./index.html">
+            <img src="./Imagenes/Logo.png" alt="Logo" class="logo">
+        </a>
+
+        <ul>
+            <li><a href="./index.html">Sobre mí</a></li>
+            <li><a href="./Mi-trabajo.html">Mi trabajo</a></li>
+            <li><a href="./Contactame.html">Contáctame</a></li>
+        </ul>
+    </nav>
+
+    <section class="trabajo-hero">
+        <div class="trabajo-hero-text">
+            <h1>Mi trabajo</h1>
+            <p>
+                En esta sección presento algunos de mis proyectos y trabajos
+                realizados en diferentes áreas del diseño gráfico y visual.
+            </p>
+        </div>
+    </section>
+
+    <section class="galeria-seccion">
+        <h2>Galería de imágenes</h2>
+
+        <div class="galeria-grid">
+            <img src="./Imagenes/Galeria-1.png" alt="Proyecto 1" onclick="abrirImagen(0)">
+            <img src="./Imagenes/Galeria-2.png" alt="Proyecto 2" onclick="abrirImagen(1)">
+            <img src="./Imagenes/Galeria-3.png" alt="Proyecto 3" onclick="abrirImagen(2)">
+            <img src="./Imagenes/Galeria-4.png" alt="Proyecto 4" onclick="abrirImagen(3)">
+            <img src="./Imagenes/Galeria-5.png" alt="Proyecto 5" onclick="abrirImagen(4)">
+            <img src="./Imagenes/Galeria-6.png" alt="Proyecto 6" onclick="abrirImagen(5)">
+            <img src="./Imagenes/Galeria-7.png" alt="Proyecto 7" onclick="abrirImagen(6)">
+            <img src="./Imagenes/Galeria-8.png" alt="Proyecto 8" onclick="abrirImagen(7)">
+        </div>
+    </section>
+
+    <div id="visor" class="visor">
+        <button class="cerrar" onclick="cerrarImagen()">×</button>
+
+        <button class="anterior" onclick="cambiarImagen(-1)">‹</button>
+
+        <img id="imagenGrande" src="" alt="Proyecto ampliado">
+
+        <button class="siguiente" onclick="cambiarImagen(1)">›</button>
+    </div>
+
+    <section class="videos-seccion">
+        <h2>Videos</h2>
+
+        <div class="videos-grid">
+
+            <video controls>
+                <source src="./Videos/Video-1.mp4" type="video/mp4">
+            </video>
+
+            <video controls>
+                <source src="./Videos/Video-2.mp4" type="video/mp4">
+            </video>
+
+            <video controls>
+                <source src="./Videos/Video-3.mp4" type="video/mp4">
+            </video>
+
+            <video controls>
+                <source src="./Videos/Video-4.mp4" type="video/mp4">
+            </video>
+
+        </div>
+    </section>
+
+    <script>
+        const imagenes = [
+            "./Imagenes/Galeria-1.png",
+            "./Imagenes/Galeria-2.png",
+            "./Imagenes/Galeria-3.png",
+            "./Imagenes/Galeria-4.png",
+            "./Imagenes/Galeria-5.png",
+            "./Imagenes/Galeria-6.png",
+            "./Imagenes/Galeria-7.png",
+            "./Imagenes/Galeria-8.png"
+        ];
+
+        let imagenActual = 0;
+
+        function abrirImagen(numero) {
+            imagenActual = numero;
+            document.getElementById("imagenGrande").src = imagenes[imagenActual];
+            document.getElementById("visor").style.display = "flex";
+        }
+
+        function cerrarImagen() {
+            document.getElementById("visor").style.display = "none";
+        }
+
+        function cambiarImagen(direccion) {
+            imagenActual += direccion;
+
+            if (imagenActual < 0) {
+                imagenActual = imagenes.length - 1;
+            }
+
+            if (imagenActual >= imagenes.length) {
+                imagenActual = 0;
+            }
+
+            document.getElementById("imagenGrande").src = imagenes[imagenActual];
+        }
+    </script>
+
+</body>
+</html>
